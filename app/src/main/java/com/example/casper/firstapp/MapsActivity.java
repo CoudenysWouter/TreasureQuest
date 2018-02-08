@@ -24,9 +24,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.HashMap;
@@ -61,6 +63,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ImageButton qrButton;
 
     private LatLngBounds.Builder builder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -141,7 +144,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (googleApiClient.isConnected()) {
                     if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                         // TODO: Consider calling
-                        ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},100);
+                        ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 100);
                         return;
                     }
                     LocationServices.FusedLocationApi.requestLocationUpdates(googleApiClient, locationRequest, this);
@@ -150,16 +153,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
 
-        if (currentTask != null){
-            if (currentTask instanceof BeaconTask){
+        if (currentTask != null) {
+            if (currentTask instanceof BeaconTask) {
                 // i have beacon task
                 beaconUtil.startRanging();
                 qrButton.setVisibility(View.GONE);
             }
         }
 
-        if (currentTask != null){
-            if (currentTask instanceof CodeTask){
+        if (currentTask != null) {
+            if (currentTask instanceof CodeTask) {
                 // i have QR task
                 qrButton.setVisibility(View.VISIBLE);
             }
@@ -167,12 +170,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    private void cancelListeners(){
+    private void cancelListeners() {
 
-        if(googleApiClient.isConnected()){
-            LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient,this);
+        if (googleApiClient.isConnected()) {
+            LocationServices.FusedLocationApi.removeLocationUpdates(googleApiClient, this);
         }
-        if(beaconUtil.isRanging()){
+        if (beaconUtil.isRanging()) {
             beaconUtil.stopRanging();
         }
 
@@ -180,43 +183,44 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onLocationChanged(Location location) {
-       // Toast.makeText(this,"Location"+location.getLatitude() + location.getLongitude(),Toast.LENGTH_SHORT).show();
-        if (currentTask != null && currentTask instanceof GPSTask){
+        // Toast.makeText(this,"Location"+location.getLatitude() + location.getLongitude(),Toast.LENGTH_SHORT).show();
+        if (currentTask != null && currentTask instanceof GPSTask) {
             double radius = (((GPSTask) currentTask).getRadius());
-            LatLng userPosition = new LatLng(location.getLatitude(),location.getLongitude());
-            LatLng taskPosition = new LatLng(currentTask.getLatitude(),currentTask.getLongitude());
-            if (SphericalUtil.computeDistanceBetween(userPosition,taskPosition)<radius){
+            LatLng userPosition = new LatLng(location.getLatitude(), location.getLongitude());
+            LatLng taskPosition = new LatLng(currentTask.getLatitude(), currentTask.getLongitude());
+            if (SphericalUtil.computeDistanceBetween(userPosition, taskPosition) < radius) {
                 //run activity
                 runPuzzleActivity(currentTask.getPuzzle());
             }
         }
     }
 
-    private void runPuzzleActivity (Puzzle puzzle){
-        if (puzzle instanceof SimplePuzzle){
-            Intent intent = new Intent(this,SimplePuzzleActivity.class);
+    private void runPuzzleActivity(Puzzle puzzle) {
+        if (puzzle instanceof SimplePuzzle) {
+            Intent intent = new Intent(this, SimplePuzzleActivity.class);
             startActivity(intent);
         }
 
-        if (puzzle instanceof ImageSelectPuzzle){
-            Intent intent = new Intent(this,ImageSelectActivity.class);
+        if (puzzle instanceof ImageSelectPuzzle) {
+            Intent intent = new Intent(this, ImageSelectActivity.class);
             startActivity(intent);
         }
 
-        if (puzzle instanceof ChoicePuzzle){
-            Intent intent = new Intent(this,TextSelectActivity.class);
+        if (puzzle instanceof ChoicePuzzle) {
+            Intent intent = new Intent(this, TextSelectActivity.class);
             startActivity(intent);
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
         currentTask = storyLine.currentTask();
-        if (currentTask == null){
+        if (currentTask == null) {
             //finished the app. game is over.
-            Intent intent = new Intent(this,FinishWinActivity.class);
+            Intent intent = new Intent(this, FinishWinActivity.class);
             startActivity(intent);
-        }else  {
+        } else {
             initializeListeners();
             updateMarkers();
         }
@@ -228,12 +232,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         cancelListeners();
         updateMarkers();
     }
-    private void  initializeTasks(){
+
+    private void initializeTasks() {
 
         builder = new LatLngBounds.Builder();
 
-        for (Task task : storyLine.taskList()){
-            Marker newMarker = null;
+        for (Task task : storyLine.taskList()) {
+            MarkerOptions markerOptions = new MarkerOptions()
+                            .icon(BitmapDescriptorFactory
+                            .fromResource(R.drawable.ic_treasure_chest_marker));
+            Marker newMarker = mMap.addMarker(markerOptions);
+            /*
             if (task instanceof GPSTask){
                 newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
             }
@@ -250,30 +259,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (task instanceof CodeTask){
                 newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
             }
+            */
             builder.include(new LatLng(task.getLatitude(),task.getLongitude()));
 
             newMarker.setVisible(false);
             markers.put(task,newMarker);
         }
-        updateMarkers();
-        zoomToNewTask(new LatLng(currentTask.getLatitude(),currentTask.getLongitude()));
-        mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
-            @Override
-            public void onMapLoaded() {
-                LatLngBounds bounds = builder.build();
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds,100);
-                //100 is the padding inside the map of the markers in pixels
-                mMap.animateCamera(cameraUpdate);
-            }
-        });
-    }
-    private void updateMarkers(){
-        for (Map.Entry<Task, Marker> entry: markers.entrySet()){
-            if (currentTask != null){
+
+
+            updateMarkers();
+            zoomToNewTask(new LatLng(currentTask.getLatitude(), currentTask.getLongitude()));
+            mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
+                @Override
+                public void onMapLoaded() {
+                    LatLngBounds bounds = builder.build();
+                    CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 100);
+                    //100 is the padding inside the map of the markers in pixels
+                    mMap.animateCamera(cameraUpdate);
+                }
+            });
+        }
+
+    private void updateMarkers() {
+        for (Map.Entry<Task, Marker> entry : markers.entrySet()) {
+            if (currentTask != null) {
                 //do something
-                if (currentTask.getName().equalsIgnoreCase(entry.getKey().getName())){
+                if (currentTask.getName().equalsIgnoreCase(entry.getKey().getName())) {
                     entry.getValue().setVisible(true);
-                } else {entry.getValue().setVisible(false);}
+                } else {
+                    entry.getValue().setVisible(false);
+                }
             } else {
                 entry.getValue().setVisible(false);
             }
@@ -292,15 +307,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 dialogInterface.dismiss();
                 currentTask.skip();
                 currentTask = storyLine.currentTask();
-                if (currentTask == null){
+                if (currentTask == null) {
                     //finish the app
-                } else{
+                } else {
                     cancelListeners();
                     initializeListeners();
                 }
                 updateMarkers();
                 //zoom to current task
-                zoomToNewTask(new LatLng(currentTask.getLatitude(),currentTask.getLongitude()));
+                zoomToNewTask(new LatLng(currentTask.getLatitude(), currentTask.getLongitude()));
             }
         });
         builder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -321,18 +336,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        currentTask=storyLine.currentTask();
+        currentTask = storyLine.currentTask();
         if (currentTask != null && currentTask instanceof CodeTask) {
-            String result = QRCodeUtil.onScanResult(this,requestCode,resultCode,data);
+            String result = QRCodeUtil.onScanResult(this, requestCode, resultCode, data);
             CodeTask codeTask = (CodeTask) currentTask;
-            if (codeTask.getQR().equals(result)){
+            if (codeTask.getQR().equals(result)) {
                 runPuzzleActivity(currentTask.getPuzzle());
             }
         }
     }
 
-    private void zoomToNewTask(LatLng position){
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(position,15);
+    private void zoomToNewTask(LatLng position) {
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(position, 15);
         mMap.animateCamera(cameraUpdate);
     }
 
