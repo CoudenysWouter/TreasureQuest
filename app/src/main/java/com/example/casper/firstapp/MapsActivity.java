@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.Tasks;
 import com.google.maps.android.SphericalUtil;
 import com.google.android.gms.maps.model.MapStyleOptions;
 
@@ -102,6 +104,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -115,7 +118,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            return;
+
         }
         try {
             // Customise the styling of the base map using a JSON object defined
@@ -136,6 +139,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.setOnMarkerClickListener(this);
+        return;
     }
 
     @Override
