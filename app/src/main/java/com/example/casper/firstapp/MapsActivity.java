@@ -237,11 +237,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onResume() {
         super.onResume();
         currentTask = storyLine.currentTask();
-        if (currentTask == null){
+        Log.i("CURRENT TASK NAME", currentTask == null ? "NULL HELLO" : currentTask.getName());
+
+        if (currentTask == null) {
             //finished the app. game is over.
-            Intent intent = new Intent(this,FinishActivity.class);
+            Intent intent = new Intent(this, FinishActivity.class);
             startActivity(intent);
-        }else  {
+        }
+//        else if (currentTask.getName().equals("SWORD")){ //this is the second challenge
+//            Intent intent = new Intent(this, ChallengeActivity.class);
+//            intent.putExtra("text", "Get to the BLACKSMITH");
+//            intent.putExtra("image", "challenge_blacksmith");
+//            startActivity(intent);
+//        }
+        else  {
             initializeListeners();
             updateMarkers();
         }
@@ -255,9 +264,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     private void  initializeTasks(){
 
+
         builder = new LatLngBounds.Builder();
 
+        if (currentTask == null) {
+            return;
+        }
+
         for (Task task : storyLine.taskList()){
+
             Marker newMarker = null;
             if (task instanceof GPSTask){
                 newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
@@ -363,5 +378,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.animateCamera(cameraUpdate);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("Hello RESTART", "RESTARTING");
+    }
 }
 

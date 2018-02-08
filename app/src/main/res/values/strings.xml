@@ -16,4 +16,5 @@
     <string name="finished">FINISHED!</string>
     <string name="introduction_string">You are a citizen in a medieval town where there have been rumors about a treasure...</string>
     <string name="rules_string">You have to follow the markers that each lead to a new place, where you will be presented with a task that you have to complete. Once you have visited all the places and have completed the challanges, you will find the location of the treasure. Inbetween the markers there are random encounters where you can win or lose something.</string>
+    <string name="title_activity_challenge">ChallengeActivity</string>
 </resources>

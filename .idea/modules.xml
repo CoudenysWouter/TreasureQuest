@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TreasureQuest.iml" filepath="$PROJECT_DIR$/TreasureQuest.iml" />
+      <module fileurl="file://D:\TreasureQuest\TreasureQuest.iml" filepath="D:\TreasureQuest\TreasureQuest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\TreasureQuest\app\app.iml" filepath="D:\TreasureQuest\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/engine/engine.iml" filepath="$PROJECT_DIR$/engine/engine.iml" />
     </modules>
   </component>
