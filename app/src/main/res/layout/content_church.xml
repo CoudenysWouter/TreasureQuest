@@ -12,28 +12,14 @@
         android:background="@drawable/parchement_1"
         />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:text="@string/introduction_string"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
-        android:textColor="@color/colorPrimary"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="30dp"
 
-        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:text="@string/rules_string"
+        android:text="bla bla bla "
         android:gravity="center_horizontal"
         android:textStyle="bold"
         android:layout_marginLeft="30dp"
@@ -41,32 +27,46 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorPrimary"
         android:layout_marginTop="20dp"
+        android:id="@+id/churchText"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/treasuremap"
+        android:src="@drawable/church"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/churchText"
+
         />
 
     <Button
-        android:id="@+id/button_continue"
+        android:id="@+id/button_accept"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/continueButton"
+        android:text="@string/acceptButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@id/button_accept"
         android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="30dp"
         android:background="@color/colorPrimary"
         android:textColor="@color/colorPrimaryDark"
         android:onClick="startTheGame"
         />
 
-
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+    <Button
+        android:id="@+id/button_decline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/declineButton"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="14dp"
-        android:layout_marginEnd="27dp"
-        android:background="@drawable/arrow_2"
-        android:onClick="startTheGame"
+        android:layout_toRightOf="@id/button_accept"
+        android:layout_marginBottom="30dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
+        android:onClick="cancelTheGame"
         />
+
+
 </RelativeLayout>
