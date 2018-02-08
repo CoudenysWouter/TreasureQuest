@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG,"User clicked the start button");
         Intent intent = new Intent(this, SummaryActivity.class);
         startActivity(intent);
+//        Intent intent = new Intent(this, ChallengeActivity.class);
+//        intent.putExtra("text", "Get to the BLACKSMITH safdsaf");
+//        intent.putExtra("image", "challenge_blacksmith");
+//        startActivity(intent);
     }
 
     @Override
