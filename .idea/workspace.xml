@@ -45,13 +45,13 @@
       <file leaf-file-name="MapsActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/casper/firstapp/MapsActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="242" column="79" lean-forward="false" selection-start-line="242" selection-start-column="79" selection-end-line="242" selection-end-column="79" />
+            <state relative-caret-position="181">
+              <caret line="242" column="88" lean-forward="false" selection-start-line="242" selection-start-column="88" selection-end-line="242" selection-end-column="88" />
               <folding>
-                <element signature="e#11109#11540#0" expanded="true" />
-                <element signature="e#11539#11540#0" expanded="true" />
-                <marker date="1518094177840" expanded="false" signature="10334:10361" ph=" { " />
-                <marker date="1518094177840" expanded="false" signature="10404:10426" ph=" }" />
+                <element signature="e#11169#11600#0" expanded="true" />
+                <element signature="e#11599#11600#0" expanded="true" />
+                <marker date="1518097273079" expanded="false" signature="10394:10421" ph=" { " />
+                <marker date="1518097273079" expanded="false" signature="10464:10486" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -2957,7 +2957,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518094243935" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518097680277" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3005,7 +3005,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518094243936" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518097680278" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3188,7 +3188,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518094243956" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1518097680301" />
       </method>
     </configuration>
     <list size="1">
@@ -3384,13 +3384,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/casper/firstapp/MapsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="242" column="79" lean-forward="false" selection-start-line="242" selection-start-column="79" selection-end-line="242" selection-end-column="79" />
+        <state relative-caret-position="181">
+          <caret line="242" column="88" lean-forward="false" selection-start-line="242" selection-start-column="88" selection-end-line="242" selection-end-column="88" />
           <folding>
-            <element signature="e#11109#11540#0" expanded="true" />
-            <element signature="e#11539#11540#0" expanded="true" />
-            <marker date="1518094177840" expanded="false" signature="10334:10361" ph=" { " />
-            <marker date="1518094177840" expanded="false" signature="10404:10426" ph=" }" />
+            <element signature="e#11169#11600#0" expanded="true" />
+            <element signature="e#11599#11600#0" expanded="true" />
+            <marker date="1518097273079" expanded="false" signature="10394:10421" ph=" { " />
+            <marker date="1518097273079" expanded="false" signature="10464:10486" ph=" }" />
           </folding>
         </state>
       </provider>

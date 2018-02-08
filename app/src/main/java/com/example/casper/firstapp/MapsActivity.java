@@ -239,8 +239,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         for (Task task : storyLine.taskList()) {
             MarkerOptions markerOptions = new MarkerOptions()
-                            .icon(BitmapDescriptorFactory
-                            .fromResource(R.drawable.ic_treasure_chest_marker));
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_treasure_chest_marker));
+            markerOptions.position(new LatLng(task.getLatitude(), task.getLongitude()));
             Marker newMarker = mMap.addMarker(markerOptions);
             /*
             if (task instanceof GPSTask){
