@@ -258,7 +258,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             markers.put(task,newMarker);
         }
         updateMarkers();
-        zoomToNewTask(new LatLng(currentTask.getLatitude(),currentTask.getLongitude()));
+       zoomToNewTask(new LatLng(currentTask.getLatitude(),currentTask.getLongitude()));
         mMap.setOnMapLoadedCallback(new GoogleMap.OnMapLoadedCallback() {
             @Override
             public void onMapLoaded() {
