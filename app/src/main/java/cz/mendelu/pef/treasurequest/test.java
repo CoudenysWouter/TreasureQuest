@@ -6,6 +6,6 @@ package cz.mendelu.pef.treasurequest;
 
 public class test {
 
-    private String tesssst;
+    private String tesst;
 
 }
