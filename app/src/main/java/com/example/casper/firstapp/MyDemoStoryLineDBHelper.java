@@ -10,7 +10,7 @@ import cz.mendelu.busItWeek.library.builder.StoryLineBuilder;
 public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 
     public MyDemoStoryLineDBHelper() {
-        super(32);
+       super(54);
     }
 
     @Override
@@ -39,27 +39,29 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 ////                .puzzleDone()
 ////                .taskDone();
 ////
-
-        builder.addGPSTask("SWORDS")
-                .radius(500)
-                .location(49.209871, 16.614903)
-                .simplePuzzle()
-                .question("How many swords do you see?")
-                .answer("33")
-                .puzzleDone()
-                .taskDone();
-
         builder.addGPSTask("MUSHROOM")
-                .radius(15)
+                .radius(100000)
                 .location(49.210158, 16.614592)
                 .imageSelectPuzzle()
                 .question("Which mushroom is the poisonous one?")
+                .hint("An old lady is making soup.:old_lady")
                 .addImage(R.drawable.mushroom_black, false)
                 .addImage(R.drawable.mushroom_amanita, true)
                 .addImage(R.drawable.mushroom_boletus, false)
                 .addImage(R.drawable.mushroom_white, false)
                 .puzzleDone()
                 .taskDone();
+
+        builder.addGPSTask("SWORDS")
+                .radius(1000000)
+                .location(49.209871, 16.614903)
+                .simplePuzzle()
+                .question("How many swords do you see?")
+                .hint("You arrived at the blacksmith and he is mad:blacksmith")
+                .answer("33")
+                .puzzleDone()
+                .taskDone();
+
 
     }
 }

@@ -30,7 +30,10 @@ import cz.mendelu.busItWeek.library.Task;
 public class ImageSelectActivity extends AppCompatActivity {
     private TextView counter;
     private TextView question;
+    private TextView hint;
+    private ImageView image;
     private RecyclerView  imageList;
+
 
     private StoryLine storyLine;
     private Task currentTask;
@@ -45,10 +48,22 @@ public class ImageSelectActivity extends AppCompatActivity {
         counter = findViewById(R.id.counter);
         question = findViewById(R.id.question);
         imageList = findViewById(R.id.imageList);
+        hint = findViewById(R.id.hint);
+
+        image = findViewById(R.id.image);
+
 
         storyLine = StoryLine.open(this,MyDemoStoryLineDBHelper.class);
         currentTask = storyLine.currentTask();
         puzzle = (ImageSelectPuzzle) currentTask.getPuzzle();
+
+        question.setText(puzzle.getQuestion());
+        hint.setText(puzzle.getHint().split(":")[0]);
+
+        String imageName = puzzle.getHint().split(":")[1];
+        int imageResourceId = getResources().getIdentifier(imageName, "drawable", this.getPackageName());
+
+        image.setImageResource(imageResourceId);
 
         listOfItems = new ArrayList<>();
         for (Map.Entry<Integer,Boolean> entry: puzzle.getImages().entrySet()){

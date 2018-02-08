@@ -56,6 +56,10 @@
         <activity
             android:name=".FinishActivity"
             android:label="@string/title_activity_finish"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ChallengeActivity"
+            android:label="@string/title_activity_challenge"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
