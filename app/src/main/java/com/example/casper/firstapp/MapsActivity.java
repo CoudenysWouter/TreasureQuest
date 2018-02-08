@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -28,7 +27,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.SphericalUtil;
 
 import java.util.HashMap;
@@ -216,7 +214,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         currentTask = storyLine.currentTask();
         if (currentTask == null){
             //finished the app. game is over.
-            Intent intent = new Intent(this,FinishActivity.class);
+            Intent intent = new Intent(this,FinishWinActivity.class);
             startActivity(intent);
         }else  {
             initializeListeners();

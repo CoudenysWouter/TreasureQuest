@@ -54,9 +54,10 @@
             android:label="@string/title_activity_image_select"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".FinishActivity"
+            android:name=".FinishWinActivity"
             android:label="@string/title_activity_finish"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".FinishLossActivity"></activity>
     </application>
 
 </manifest>
