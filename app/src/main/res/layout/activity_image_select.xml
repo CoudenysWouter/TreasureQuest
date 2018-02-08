@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.casper.firstapp.ImageSelectActivity"
+    android:padding="20dp">
+
+
+    <RelativeLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="00:30"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/counter"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            tools:text="Hello"
+            android:layout_marginBottom="20dp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/imageList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/question">
+
+        </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
