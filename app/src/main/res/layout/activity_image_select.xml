@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.casper.firstapp.ImageSelectActivity"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/parchement_1"
+    >
 
 
     <RelativeLayout
@@ -20,18 +22,19 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"/>
-            android:layout_height="wrap_content" />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:id="@+id/image"
+            android:layout_below="@id/counter"
             />
         <TextView
             android:id="@+id/hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/counter"
+            android:layout_below="@id/image"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             tools:text="Hello"
             android:layout_marginBottom="20dp"/>

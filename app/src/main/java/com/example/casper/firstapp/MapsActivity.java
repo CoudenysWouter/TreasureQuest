@@ -27,7 +27,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -119,7 +118,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+            try {
+                // Customise the styling of the base map using a JSON object defined
+                // in a raw resource file.
+                boolean success = googleMap.setMapStyle(
+                        MapStyleOptions.loadRawResourceStyle(
+                                this, R.raw.style_json));
 
+                if (!success) {
+                    Log.e(TAG, "Style parsing failed.");
+                }
+            } catch (Resources.NotFoundException e) {
+                Log.e(TAG, "Can't find style. Error: ", e);
+            }
+            return;
         }
         try {
             // Customise the styling of the base map using a JSON object defined
@@ -140,7 +152,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.getUiSettings().setMapToolbarEnabled(false);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.setOnMarkerClickListener(this);
-        return;
+        //return;
     }
 
     @Override
@@ -274,10 +286,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         for (Task task : storyLine.taskList()){
 
-            MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_treasure_chest_marker));
-            markerOptions.position(new LatLng(task.getLatitude(), task.getLongitude()));
-            Marker newMarker = mMap.addMarker(markerOptions);
-
+            Marker newMarker = null;
+            if (task instanceof GPSTask){
+                newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
+            }
+            if (task instanceof BeaconTask){
+                newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
+                BeaconDefinition definition = new BeaconDefinition((BeaconTask) task) {
+                    @Override
+                    public void execute() {
+                        runPuzzleActivity(currentTask.getPuzzle());
+                    }
+                };
+                beaconUtil.addBeacon(definition);
+            }
+            if (task instanceof CodeTask){
+                newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
+            }
             builder.include(new LatLng(task.getLatitude(),task.getLongitude()));
 
             newMarker.setVisible(false);
