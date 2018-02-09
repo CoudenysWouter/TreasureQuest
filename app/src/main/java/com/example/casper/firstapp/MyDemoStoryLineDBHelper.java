@@ -12,7 +12,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
     public MyDemoStoryLineDBHelper() {
 
 
-       super(67);
+       super(68);
 
     }
 
@@ -43,7 +43,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
 ////                .taskDone();
 ////
         builder.addGPSTask("MUSHROOM")
-                .radius(1000000)
+                .radius(10)
                 .location(49.210158, 16.614592)
                 .imageSelectPuzzle()
                 .question("Which mushroom is the poisonous one?")
@@ -56,7 +56,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addGPSTask("SWORDS")
-                .radius(1000000)
+                .radius(10)
                 .location(49.209871, 16.614903)
                 .simplePuzzle()
                 .question("How many swords do you see?")
@@ -66,7 +66,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addGPSTask("Market")
-                .radius(10000000)
+                .radius(10)
                 .location(49.210374, 16.613165)
                 .imageSelectPuzzle()
                 .question("Choose good food.")
@@ -79,7 +79,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
                 .taskDone();
 
         builder.addGPSTask("TAVERN")
-                .radius(1000000)
+                .radius(10)
                 .location(49.211057, 16.617499)
                 .imageSelectPuzzle()
                 .question("What is the most common beverage?")
