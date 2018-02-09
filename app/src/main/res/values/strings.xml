@@ -8,10 +8,10 @@
     <string name="acceptButton">Accept</string>
     <string name="declineButton">Decline</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_simple_puzzle">SimplePuzzleActivity</string>
-    <string name="title_activity_text_select">TextSelectActivity</string>
-    <string name="title_activity_image_select">ImageSelectActivity</string>
-    <string name="title_activity_finish">FinishActivity</string>
+    <string name="title_activity_simple_puzzle">Treasure Quest</string>
+    <string name="title_activity_text_select">Treasure Quest</string>
+    <string name="title_activity_image_select">Treasure Quest</string>
+    <string name="title_activity_finish">Treasure Quest</string>
     <string name="answer_question">Answer question</string>
     <string name="finished">Congratulations! You have found the treasure! This marks the end of the game. Hope you enjoyed it.</string>
     <string name="introduction_string">You are a citizen in a medieval town where there have been rumors about a treasure...</string>
