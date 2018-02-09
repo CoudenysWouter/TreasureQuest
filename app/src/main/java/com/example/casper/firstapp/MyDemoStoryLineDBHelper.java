@@ -12,7 +12,7 @@ public class MyDemoStoryLineDBHelper extends StoryLineDatabaseHelper {
     public MyDemoStoryLineDBHelper() {
 
 
-       super(54);
+       super(55);
 
     }
 
