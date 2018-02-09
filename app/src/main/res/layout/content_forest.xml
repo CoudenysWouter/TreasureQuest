@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:text="bla bla bla "
+        android:text="@string/forest_text"
         android:gravity="center_horizontal"
         android:textStyle="bold"
         android:layout_marginLeft="30dp"
@@ -37,6 +37,7 @@
         android:src="@drawable/magicalforest"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/forestText"
+        android:layout_marginTop="10dp"
 
         />
 

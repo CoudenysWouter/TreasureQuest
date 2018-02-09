@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textView"
-        android:text="bla bla bla "
+        android:text="@string/tournament_text"
         android:gravity="center_horizontal"
         android:textStyle="bold"
         android:layout_marginLeft="30dp"
@@ -31,14 +31,14 @@
         />
 
     <ImageView
+        android:id="@+id/treasuremap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/treasuremap"
-        android:src="@drawable/knighttournament"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/knighttournamentText"
+        android:layout_marginTop="14dp"
 
-        />
+        android:layout_toStartOf="@+id/button_decline"
+        android:src="@drawable/knighttournament" />
 
     <Button
         android:id="@+id/button_accept"
