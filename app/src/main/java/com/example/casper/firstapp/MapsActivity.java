@@ -27,6 +27,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -273,23 +274,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         for (Task task : storyLine.taskList()){
 
-            Marker newMarker = null;
-            if (task instanceof GPSTask){
-                newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
-            }
-            if (task instanceof BeaconTask){
-                newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
-                BeaconDefinition definition = new BeaconDefinition((BeaconTask) task) {
-                    @Override
-                    public void execute() {
-                        runPuzzleActivity(currentTask.getPuzzle());
-                    }
-                };
-                beaconUtil.addBeacon(definition);
-            }
-            if (task instanceof CodeTask){
-                newMarker = MapUtil.createColoredCircleMarker(this,mMap,task.getName(),R.color.colorPrimary,R.style.marker_text_style, new LatLng(task.getLatitude(),task.getLongitude()));
-            }
+            MarkerOptions markerOptions = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_treasure_chest_marker));
+            markerOptions.position(new LatLng(task.getLatitude(), task.getLongitude()));
+            Marker newMarker = mMap.addMarker(markerOptions);
+
             builder.include(new LatLng(task.getLatitude(),task.getLongitude()));
 
             newMarker.setVisible(false);
